@@ -21,6 +21,17 @@ export default class App extends React.Component {
 		})
 	}
 
+	handleChange = (event) => {
+		this.setState((monsters) => {
+			console.log(monsters);
+			const filteredMonsters = monsters.monsters.filter((monster) => {return monster.name.toLowerCase().includes(event.target.value)});
+			return({
+				...monsters,
+				monsters: filteredMonsters,
+			});
+		});
+	}
+
 	render() {
 		var rolodex = this.state.monsters.map((monster) => {
 			return (
@@ -31,7 +42,8 @@ export default class App extends React.Component {
 		})
 		return (
 			<>
-				<h1>App</h1>
+				<h1>Monster Rolodex</h1>
+				<input type="search" placeholder="Search Monsters" onChange={this.handleChange}/>
 				{rolodex}
 			</>
 		)
