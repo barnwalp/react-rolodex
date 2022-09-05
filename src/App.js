@@ -17,23 +17,24 @@ export default class App extends React.Component {
 			return ({
 				loaded: true,
 				monsters: data,
+				searchString: "",
 			})
 		})
 	}
 
 	handleChange = (event) => {
 		this.setState((monsters) => {
-			console.log(monsters);
-			const filteredMonsters = monsters.monsters.filter((monster) => {return monster.name.toLowerCase().includes(event.target.value)});
 			return({
 				...monsters,
-				monsters: filteredMonsters,
+				searchString: event.target.value,
 			});
 		});
 	}
 
 	render() {
-		var rolodex = this.state.monsters.map((monster) => {
+		const filteredMonsters = this.state.monsters.filter((monster) => {return monster.name.toLowerCase().includes(this.state.searchString)});
+
+		var rolodex = filteredMonsters.map((monster) => {
 			return (
 				<div key={monster.id}>
 					<h2>{monster.name}</h2>
