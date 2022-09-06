@@ -1,4 +1,5 @@
 import React from 'react';
+import CardList from './components/card-list/card-list.component.jsx';
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -33,19 +34,11 @@ export default class App extends React.Component {
 
 	render() {
 		const filteredMonsters = this.state.monsters.filter((monster) => {return monster.name.toLowerCase().includes(this.state.searchString)});
-
-		var rolodex = filteredMonsters.map((monster) => {
-			return (
-				<div key={monster.id}>
-					<h2>{monster.name}</h2>
-				</div>
-			)
-		})
 		return (
 			<>
 				<h1>Monster Rolodex</h1>
 				<input type="search" placeholder="Search Monsters" onChange={this.handleChange}/>
-				{rolodex}
+				<CardList monsters={filteredMonsters}/>
 			</>
 		)
 	}
