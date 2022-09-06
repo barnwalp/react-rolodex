@@ -1,5 +1,6 @@
 import React from 'react';
 import CardList from './components/card-list/card-list.component.jsx';
+import SearchBox from './components/search-box/search-box.component.jsx';
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -13,7 +14,7 @@ export default class App extends React.Component {
 	async componentDidMount() {
 		const response = await fetch('https://jsonplaceholder.typicode.com/users');
 		const data = await response.json();
-		console.log(data);
+		// console.log(data);
 		this.setState(() => {
 			return ({
 				loaded: true,
@@ -37,7 +38,10 @@ export default class App extends React.Component {
 		return (
 			<>
 				<h1>Monster Rolodex</h1>
-				<input type="search" placeholder="Search Monsters" onChange={this.handleChange}/>
+				<SearchBox 
+					className="search-box"
+					onChangehandler={this.handleChange}
+					placeholder="Search Monsters"/>
 				<CardList monsters={filteredMonsters}/>
 			</>
 		)
