@@ -1,6 +1,7 @@
 import React from 'react';
 import CardList from './components/card-list/card-list.component.jsx';
 import SearchBox from './components/search-box/search-box.component.jsx';
+import './App.css';
 
 export default class App extends React.Component {
 	constructor(props) {
