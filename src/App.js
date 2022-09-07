@@ -15,7 +15,6 @@ export default class App extends React.Component {
 	async componentDidMount() {
 		const response = await fetch('https://jsonplaceholder.typicode.com/users');
 		const data = await response.json();
-		// console.log(data);
 		this.setState(() => {
 			return ({
 				loaded: true,
@@ -38,7 +37,7 @@ export default class App extends React.Component {
 		const filteredMonsters = this.state.monsters.filter((monster) => {return monster.name.toLowerCase().includes(this.state.searchString)});
 		return (
 			<>
-				<h1>Monster Rolodex</h1>
+				<h1 className='app-title'>Monster Rolodex</h1>
 				<SearchBox 
 					className="search-box"
 					onChangehandler={this.handleChange}
